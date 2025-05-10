@@ -42,7 +42,7 @@ The data-blob-diff-path="partial_url" takes the raw HTML contents of https://git
 
 Victim clicks on invisible, full page overlay -> payload sends a POST request that adds secondary email (which is attacker controlled) -> attacker can then go to that secondary email, follow the confirmation link -> then use confirmed secondary email to change password and remove primary email (locking victim out of their account).
 
-## Steps to reproduce - XSS
+## Steps To Reproduce - XSS
 
 1. Create a project.
 2. Create a HTML file with XSS payload <script>alert(document.domain)</script>
@@ -52,11 +52,11 @@ Victim clicks on invisible, full page overlay -> payload sends a POST request th
 6. The auto refresh should render payload for both attacker and victim.
 7. If victim clicks on invisible, full page overlay, payload triggers.
 
-## Steps to reproduce - Arbitrary POST Request - ATO, New Admin Account, SSH Key
+## Steps To Reproduce - Arbitrary POST Request - ATO, New Admin Account, SSH Key
 
 1. Just post a comment with any of these payloads
 2. Admin.txt payload only works if victim has admin privileges, not likely, but potentially devastating since it automatically creates new verified admin account, which can then delete other admins.
-3. ssh.txt payload adds new ssh key to victims account.
+3. ssh.txt payload adds a new ssh key to victims account.
 
 Or just run the script.
 
