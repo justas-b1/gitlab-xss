@@ -46,9 +46,9 @@ Victim clicks on invisible, full page overlay -> payload sends a POST request th
 
 1. Create a project.
 2. Create a HTML file with XSS payload <script>alert(document.domain)</script>
-3. Copy the HTML files partial raw path, example: /group/project/-/raw/main/test.html.
+3. Copy the HTML files partial raw path, example: /group/project/-/raw/main/test.html and modify xss.txt payload.
 4. Create any merge request and go to commit page (a page where file diffs are located).
-5. Add a comment with xss.txt payload
+5. Add a comment with modified xss.txt payload
 6. The auto refresh should render payload for both attacker and victim.
 7. If victim clicks on invisible, full page overlay, payload triggers.
 
