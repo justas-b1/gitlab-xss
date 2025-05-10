@@ -1,10 +1,14 @@
 # Gitlab XSS & CSP Bypass on Commit Page - ATO - POC Code
 
-0-day as of Saturday, May 10, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate.
+0-day as of Saturday, May 10, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
 
 ## Video POC - XSS
 
 [![PoC Video](https://img.youtube.com/vi/xEB7v0Ye7pE/maxresdefault.jpg)](https://youtu.be/xEB7v0Ye7pE)
+
+## Video POC - ATO
+
+[![PoC Video](https://img.youtube.com/vi/rzFndaPhj2k/maxresdefault.jpg)](https://youtu.be/rzFndaPhj2k)
 
 ## Quick Start
 
