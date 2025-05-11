@@ -1,6 +1,6 @@
 # Gitlab XSS & CSP Bypass on Commit Page - ATO - POC Code
 
-0-day as of Saturday, May 10, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
+0-day as of Sunday, May 11, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
 
 ## Video POC - XSS
 
@@ -39,6 +39,10 @@ json:table allows HTML injection using "isHtmlSafe": true attribute. This combin
 The data-blob-diff-path="partial_url" takes the raw HTML contents of https://gitlab.com/partial_url response and appends it on page.
 
 ## Explanation - Arbitrary POST Request - ATO
+
+data-award-url from https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/notes/components/noteable_note.vue
+
+Can be combined with HTML injection to send arbitrary POST requests to various critical endpoints like /-/profile/emails? (adds a secondary email to users account) and /api/v4/users? (if the victim is admin, it creates a new verified admin account, there's no 2FA or any kind of additional protection).
 
 Victim clicks on invisible, full page overlay -> payload sends a POST request that adds secondary email (which is attacker controlled) -> attacker can then go to that secondary email, follow the confirmation link -> then use confirmed secondary email to change password and remove primary email (locking victim out of their account).
 
