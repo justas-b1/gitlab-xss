@@ -1,6 +1,6 @@
 # Gitlab XSS & CSP Bypass on Commit Page - ATO - POC Code
 
-0-day as of Sunday, May 11, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
+0-day as of Monday, May 12, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
 
 ## Video POC - XSS
 
@@ -49,20 +49,20 @@ Victim clicks on invisible, full page overlay -> payload sends a POST request th
 ## Steps To Reproduce - XSS
 
 1. Create a project.
-2. Create a HTML file with XSS payload <script>alert(document.domain)</script>
+2. Create a HTML file with XSS payload: <script>alert(document.domain)</script>
 3. Copy the HTML files partial raw path, example: /group/project/-/raw/main/test.html and modify xss.txt payload.
 4. Create any merge request and go to commit page (a page where file diffs are located).
-5. Add a comment with modified xss.txt payload
-6. The auto refresh should render payload for both attacker and victim.
+5. Add a comment with modified xss.txt payload.
+6. After some time, the auto refresh should render payload for both attacker and victim (and anyone who has the commit page opened in any of browser tabs).
 7. If victim clicks on invisible, full page overlay, payload triggers.
 
 ## Steps To Reproduce - Arbitrary POST Request - ATO, New Admin Account, SSH Key
 
-1. Just post a comment with any of these payloads
+1. Post a comment with any of these payloads.
 2. Admin.txt payload only works if victim has admin privileges, not likely, but potentially devastating since it automatically creates new verified admin account, which can then delete other admins.
 3. ssh.txt payload adds a new ssh key to victims account.
 
-Or just run the script.
+Or run the script.
 
 ## 🛠️ GitLab Commit Note Poster (Automated Script)
 
@@ -115,13 +115,23 @@ GitLab is a web-based DevOps platform that provides an integrated CI/CD pipeline
 
 GitLab is trusted by companies of all sizes, from startups to enterprises, including:
 
-| Company       | Industry              |
-| ------------- | --------------------- |
-| Goldman Sachs | Finance 💵            |
-| Siemens       | Engineering ⚙️        |
-| NVIDIA        | Technology 💻         |
-| T-Mobile      | Telecommunications 📱 |
-| NASA          | Aerospace 🚀          |
+| Company                                            | Industry                  | Description                                                                                                                   |
+| -------------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [Goldman Sachs](https://www.goldmansachs.com/)     | Finance 💵                | A global investment bank using GitLab to modernize software pipelines and improve developer efficiency.                       |
+| [Siemens](https://www.siemens.com/)                | Engineering ⚙️            | A global tech powerhouse leveraging GitLab for collaborative development in industrial automation and digital infrastructure. |
+| [NVIDIA](https://www.nvidia.com/)                  | Technology 💻             | A leader in GPUs and AI computing, NVIDIA uses GitLab for scalable CI/CD and code management.                                 |
+| [T-Mobile](https://www.t-mobile.com/)              | Telecommunications 📱     | Uses GitLab to manage internal tools and rapidly deliver new digital services to customers.                                   |
+| [NASA](https://www.nasa.gov/)                      | Aerospace 🚀              | NASA utilizes GitLab for managing mission-critical code in scientific and engineering applications.                           |
+| [Sony](https://www.sony.com/)                      | Entertainment 🎮          | Uses GitLab to support development workflows across gaming, electronics, and entertainment platforms.                         |
+| [UBS](https://www.ubs.com/)                        | Banking 🏦                | A Swiss banking giant leveraging GitLab for secure, compliant DevOps in financial applications.                               |
+| [Lockheed Martin](https://www.lockheedmartin.com/) | Defense & Aerospace 🛡️   | Employs GitLab for secure software development in defense systems and space technologies.                                     |
+| [Shopify](https://www.shopify.com/)                | E-commerce 🛒             | Uses GitLab to scale DevOps practices and support its cloud-based e-commerce platform.                                        |
+| [ING](https://www.ing.com/)                        | Financial Services 💳     | A Dutch bank adopting GitLab to improve developer collaboration and accelerate delivery.                                      |
+| [CERN](https://home.cern/)                         | Scientific Research 🔬    | The European Organization for Nuclear Research uses GitLab to coordinate complex software across global teams.                |
+| [Splunk](https://www.splunk.com/)                  | Data Analytics 📊         | Relies on GitLab for managing code and automating builds in its data platform ecosystem.                                      |
+| [Comcast](https://corporate.comcast.com/)          | Media & Communications 📺 | Uses GitLab to streamline application delivery across their massive entertainment and broadband network.                      |
+| [Deutsche Telekom](https://www.telekom.com/)       | Telecommunications 🌍     | Applies GitLab for agile development and managing cloud-native telecom infrastructure.                                        |
+| [Alibaba](https://www.alibaba.com/)                | Tech & E-commerce 🧧      | One of the world’s largest tech firms, using GitLab to scale development across massive infrastructure.                       |
 
 ## 🛡️ GitLab in Defense
 
