@@ -163,11 +163,15 @@ GitLab is favored by U.S. Department of Defense (DoD) agencies for secure, self-
 
 Its ability to manage sensitive data and maintain operational control makes GitLab a key tool for government and defense sectors.
 
-## Affected Websites
+## 🌐 Affected Websites
 
-Shodan query: http.title:"GitLab"
+Shodan query: 
 
-Returns more than 50 thousand results.
+```
+http.title:"GitLab"
+```
+
+Returns over 50,000 publicly exposed GitLab instances. Some servers allow new user sign-ups without admin approval.
 
 ![Shodan](images/shodan_gitlab_self_hosted.PNG)
 
