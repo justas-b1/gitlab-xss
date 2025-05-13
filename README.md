@@ -1,6 +1,6 @@
 # Gitlab XSS & CSP Bypass on Commit Page - ATO - POC Code
 
-0-day as of Monday, May 12, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
+0-day as of Tuesday, May 13, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
 
 ## Video POC - XSS
 
@@ -19,18 +19,39 @@ git clone https://github.com/justas-b1/gitlab-xss.git
 cd gitlab-xss
 ```
 
-2.1 Modify the xss.txt or ato.txt file.
+2. Modify the xss.txt or ato.txt file.
 
-2.2 Run - XSS
-
+3. Run - XSS
 ```
 python poc.py --url "https://gitlab.com/group/project/-/commit/49d1bf57b239f06b87d317868anmnc3447e59581" --session "YOUR_SESSION_COOKIE_VALUE" --file xss.txt
 ```
 
-2.3 Run - ATO
+4. Run - ATO
 ```
 python poc.py --url "https://gitlab.com/group/project/-/commit/49d1bf57b239f06b87d317868anmnc3447e59581" --session "YOUR_SESSION_COOKIE_VALUE" --file ato.txt
 ```
+
+### 🔍 How to Find _gitlab_session in Request Headers (Using Browser DevTools)
+
+You can find your GitLab session cookie (_gitlab_session) by inspecting the request headers of a network request.
+
+<details> <summary>🔽 Click To Expand</summary>
+
+1. 🧑‍💻 Log in to GitLab in your browser.
+2. 🛠️ Press F12 or Right-click → Inspect to open Developer Tools.
+3. 🌐 Go to the Network tab.
+4. 🔁 Refresh the page to load requests.
+5. 📄 Click on any request.
+6. 📥 In the Headers section, scroll down to Request Headers → look for the Cookie header.
+7. 🍪 Find the cookie named _gitlab_session — that's your active session cookie.
+
+It looks something like:
+
+```
+_gitlab_session=abcdef1234567890abcdef1234567890...
+```
+
+</details>
 
 ## Explanation - XSS
 
