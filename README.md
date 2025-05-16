@@ -1,6 +1,6 @@
 # Gitlab XSS & CSP Bypass on Commit Page - ATO - POC Code
 
-0-day as of Friday, May 16, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
+0-day as of Friday, May 16, 2025. Version - 18.1.0-pre - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
 
 ## Video POC - XSS
 
@@ -59,14 +59,6 @@ json:table allows HTML injection using "isHtmlSafe": true attribute. This combin
 
 The data-blob-diff-path="partial_url" takes the raw HTML contents of https://gitlab.com/partial_url response and appends it on page.
 
-## Explanation - Arbitrary POST Request - ATO
-
-data-award-url from https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/notes/components/noteable_note.vue
-
-Can be combined with HTML injection to send arbitrary POST requests to various critical endpoints like /-/profile/emails? (adds a secondary email to users account) and /api/v4/users? (if the victim is admin, it creates a new verified admin account, there's no 2FA or any kind of additional protection).
-
-Victim clicks on invisible, full page overlay -> payload sends a POST request that adds secondary email (which is attacker controlled) -> attacker can then go to that secondary email, follow the confirmation link -> then use confirmed secondary email to change password and remove primary email (locking victim out of their account).
-
 ## Steps To Reproduce - XSS
 
 1. Create a project.
@@ -76,6 +68,28 @@ Victim clicks on invisible, full page overlay -> payload sends a POST request th
 5. Add a comment with modified xss.txt payload.
 6. After some time, the auto refresh should render payload for both attacker and victim (and anyone who has the commit page opened in any of browser tabs).
 7. If victim clicks on invisible, full page overlay, payload triggers.
+
+## Explanation - Arbitrary POST Request - ATO
+
+data-award-url from https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/notes/components/noteable_note.vue
+
+Can be combined with HTML injection to send arbitrary POST requests to various critical endpoints like /-/profile/emails? (adds a secondary email to users account) and /api/v4/users? (if the victim is admin, it creates a new verified admin account, there's no 2FA or any kind of additional protection).
+
+### GitLab Account Takeover via HTML Injection & Arbitrary POST Request
+
+1. Invisible Overlay Trap:
+The victim clicks on what appears to be a normal page element, but in reality, it's a transparent, full-screen overlay injected via HTML.
+
+2. Silent Payload Execution:
+Upon interaction, a malicious POST request is silently sent, adding an attacker-controlled secondary email to the victim’s GitLab account.
+
+3. Email Confirmation Hijack:
+The attacker accesses their own email, follows GitLab’s secondary email confirmation link, and the added secondary email becomes verified.
+
+4. Account Lockout:
+Using the now-verified secondary email, **the attacker changes the account password and removes the victim’s primary email**, effectively locking the victim out of their own account.
+
+![Shodan](images/ato_graph.png)
 
 ## Steps To Reproduce - Arbitrary POST Request - ATO, New Admin Account, SSH Key
 
