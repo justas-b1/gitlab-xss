@@ -1,6 +1,6 @@
 # Gitlab XSS & CSP Bypass on Commit Page - ATO - POC Code
 
-0-day as of Tuesday, May 13, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
+0-day as of Friday, May 16, 2025. Version - 17.11.2 - 90+ days since report at February 4, 2025. I guess it's a 3 month old duplicate. Severity is somewhere between 8.0 and 9.0.
 
 ## Video POC - XSS
 
@@ -71,7 +71,7 @@ Victim clicks on invisible, full page overlay -> payload sends a POST request th
 
 1. Create a project.
 2. Create a HTML file with XSS payload: <script>alert(document.domain)</script>
-3. Copy the HTML files partial raw path, example: /group/project/-/raw/main/test.html and modify xss.txt payload.
+3. Copy the HTML file's partial raw path, example: /group/project/-/raw/main/test.html and modify xss.txt payload.
 4. Create any merge request and go to commit page (a page where file diffs are located).
 5. Add a comment with modified xss.txt payload.
 6. After some time, the auto refresh should render payload for both attacker and victim (and anyone who has the commit page opened in any of browser tabs).
