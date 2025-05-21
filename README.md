@@ -1,6 +1,6 @@
 # Gitlab XSS & CSP Bypass on Commit Page - ATO - POC Code/Video
 
-Unpatched known vulnerability as of Tuesday, May 20, 2025. Version - 18.1.0-pre - 100+ days since report at February 4, 2025. Severity is somewhere between 8.0 and 9.0.
+Unpatched known vulnerability as of Wednesday, May 21, 2025. Version - 18.1.0-pre - 100+ days since report at February 4, 2025. Severity is somewhere between 8.0 and 9.0.
 
 ## Video POC - XSS
 
