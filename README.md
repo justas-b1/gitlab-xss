@@ -1,3 +1,13 @@
+# ⚠️ Legal Disclaimer
+
+This Proof-of-Concept (PoC) is provided **for educational purposes only**.  
+
+- **Authorized Use Only**: Test only on systems you own or have explicit permission to assess.  
+- **No Liability**: The author is not responsible for misuse or damages caused by this tool.  
+- **Ethical Responsibility**: Do not use this tool to violate laws or exploit systems without consent.  
+
+By using this software, you agree to these terms. 
+
 # Gitlab XSS & CSP Bypass on Commit Page - ATO - POC Code/Video
 
 Unpatched known vulnerability as of Wednesday, May 21, 2025. Version - 18.1.0-pre - 100+ days since report at February 4, 2025. Severity is somewhere between 8.0 and 9.0.
